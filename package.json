@@ -1,0 +1,17 @@
+{
+  "name": "generator-apib",
+  "version": "1.0.0",
+  "description": "A Yeoman generator for creating an api-blueprint authoring environment",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "files": [
+    "generators/app"
+  ],
+  "author": "Ben Wilhelm <ben@doublebeamdesign.com> (http://doublebeamdesign.com)",
+  "license": "MIT",
+  "dependencies": {
+    "yeoman-generator": "^0.24.1"
+  }
+}
