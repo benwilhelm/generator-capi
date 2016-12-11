@@ -1,0 +1,45 @@
+# Group <%= resourcePlural %>
+
+<%= resourceDescription %>
+
+---
+
+## <%= resourcePlural %> Collection [<%= route %>]
+
+### Get all <%= resourcePlural %> [GET]
+
+  + Request (application/json)
+    + Attributes (<%= resourceName %>)
+
+  + Response 200 (application/json)
+    + Attributes (array[<%= resourceName %>])
+
+### Create a new <%= resourceName %> [POST]
+
+  + Request (application/json)
+    + Attributes (<%= resourceName %>)
+
+  + Response 200 (application/json)
+    + Attributes (<%= resourceName %>)
+
+## Single <%= resourceName %> [<%= route %>/{<%= resourceName.toLowerCase() %>_id}]
+
+  + Parameters
+    + <%= resourceName.toLowerCase() %>_id (number) - Integer: The unique ID of the <%= resourceName %> requested
+
+### Get a <%= resourceName %> [GET]
+
+  + Response 200 (application/json)
+    + Attributes (<%= resourceName %>)
+
+### Update a <%= resourceName %> [PUT]
+  
+  + Request (application/json)
+    + Attributes (<%= resourceName %>)
+
+  + Response 200 (application/json)
+    + Attributes (<%= resourceName %>)
+
+### Delete a <%= resourceName %> [DELETE]
+
+  + Response 204 (application/json)

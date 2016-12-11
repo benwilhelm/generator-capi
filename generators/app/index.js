@@ -1,9 +1,9 @@
-var generators = require('yeoman-generator')
+var Base = require('../../lib/generator-base')
 
-module.exports = generators.Base.extend({
+module.exports = Base.extend({
   
   constructor: function() {
-    generators.Base.apply(this, arguments)
+    Base.apply(this, arguments)
   },
   
   prompting: function() {
@@ -15,7 +15,8 @@ module.exports = generators.Base.extend({
     }, {
       type: 'input',
       name: 'projectDescription',
-      message : 'Project Description'
+      message : 'Project Description',
+      default : '...'
     }, {
       type: 'input',
       name: 'docPort',
@@ -27,7 +28,7 @@ module.exports = generators.Base.extend({
       message: 'Port to serve mock API',
       default: 8000
     }]).then(function(answers){
-      this.userConfig = answers
+      this.templateVars = answers
     }.bind(this))
   },
   
@@ -38,29 +39,9 @@ module.exports = generators.Base.extend({
     this._copyTpl('_gitignore', '.gitignore')
     this._copyTpl('_gulpfile.js', 'gulpfile.js')
     this._copyTpl('api-src/_heading.apib')
+    this._copy('api-src/data-structures/_heading.apib')
   },
-  
-  _copy: function(src, dest) {
-    dest = dest || src;
-    this.fs.copy(
-      this.templatePath(src),
-      this.destinationPath(dest)
-    )
-  },
-  
-  _copyTpl: function(src, dest) {
-    dest = dest || src;
-    this.fs.copyTpl(
-      this.templatePath(src),
-      this.destinationPath(dest),
-      this.userConfig
-    )
-  },
-  
-  _touch: function(file) {
-    this.fs.write( this.destinationPath(file), "" )
-  },
-  
+
   install: function() {
     this.npmInstall([
       'aglio',
