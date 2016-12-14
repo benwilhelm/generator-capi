@@ -1,5 +1,5 @@
 {
-  "name": "generator-apib",
+  "name": "generator-capi",
   "version": "1.0.0",
   "description": "A Yeoman generator for creating an api-blueprint authoring environment",
   "main": "index.js",
