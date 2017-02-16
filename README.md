@@ -22,7 +22,7 @@ This will build your generic project, prompting you for name and description, po
 
 **Creating a REST Resource**
 
-    yo capi:resource <name-of-resource>
+    yo capi:resource
 
 This will create a new model definition file in the `api-src/data-structures` directory, and a new routes file in `api-src/routes`
 
