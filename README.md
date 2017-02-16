@@ -1,3 +1,5 @@
+# Composable API Generator
+
 CAPI stands for _Composable API_. This is a Yeoman generator that creates a gulp-based authoring environment for [API Blueprint][apib] files, building a master blueprint file and HTML documentation composed of smaller, route- and model-specific files.
 
 [apib]: https://apiblueprint.org/documentation/tutorial.html
