@@ -6,6 +6,10 @@ module.exports = Base.extend({
     Base.apply(this, arguments)
   },
   
+  initializing: function() {
+    this.composeWith(require.resolve('generator-npm-init/app'))
+  },
+  
   prompting: function() {
     return this.prompt([{
       type : 'input',
@@ -29,6 +33,8 @@ module.exports = Base.extend({
       default: 8000
     }]).then(function(answers){
       this.templateVars = answers
+      this.log("")
+      this.log("*** Initializing package.json ***")
     }.bind(this))
   },
   

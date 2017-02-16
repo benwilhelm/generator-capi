@@ -1,0 +1,11 @@
+{
+  "name": "capi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ben Wilhelm <ben@doublebeamdesign.com> (http://doublebeamdesign.com)",
+  "license": "ISC"
+}
