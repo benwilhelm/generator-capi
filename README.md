@@ -4,7 +4,6 @@ CAPI stands for _Composable API_. This is a Yeoman generator that creates a gulp
 
 [apib]: https://apiblueprint.org/documentation/tutorial.html
 
-In addition, the gulp command will start two local servers, 
 
 ## Prerequisites
 
