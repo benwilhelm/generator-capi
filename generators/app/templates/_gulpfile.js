@@ -47,7 +47,9 @@ gulp.task("serve:api", function(){
     var argv = {
       sourceFiles: `${API_DOCS}/${API_BLUEPRINT}`,
       staticPaths: staticPaths,
-      serverPort: SERVER_PORT
+      serverPort: SERVER_PORT,
+      watch: true,
+      disableCORS: true
     };
 
     drakov.run(argv);
@@ -69,6 +71,5 @@ gulp.task("default", [
   "build:apib", 
   "build:html", 
   "serve:docs", 
-  "serve:api", 
   "watch"
 ])
