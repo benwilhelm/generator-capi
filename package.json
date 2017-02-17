@@ -7,7 +7,8 @@
     "test": "jasmine spec/**/*.spec.js"
   },
   "files": [
-    "generators/app"
+    "generators/app",
+    "generators/resource"
   ],
   "author": "Ben Wilhelm <ben@doublebeamdesign.com> (http://doublebeamdesign.com)",
   "repository": "benwilhelm/generator-capi",
