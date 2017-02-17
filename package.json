@@ -1,6 +1,6 @@
 {
   "name": "generator-capi",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Yeoman generator for creating an api-blueprint authoring environment",
   "main": "generators/app/index.js",
   "scripts": {
@@ -10,6 +10,7 @@
     "generators/app"
   ],
   "author": "Ben Wilhelm <ben@doublebeamdesign.com> (http://doublebeamdesign.com)",
+  "repository": "benwilhelm/generator-capi",
   "license": "MIT",
   "dependencies": {
     "dashify": "^0.2.2",
