@@ -1,3 +1,5 @@
+'use strict';
+
 let assert  = require("yeoman-assert");
 let fs      = require('fs');
 let helpers = require("yeoman-test");

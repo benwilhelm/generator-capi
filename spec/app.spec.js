@@ -1,3 +1,5 @@
+'use strict';
+
 let assert  = require("yeoman-assert");
 let fs      = require('fs');
 let helpers = require("yeoman-test");
@@ -7,21 +9,21 @@ describe("Main Generator (yo capi)", function(){
   
   describe("Generic setup", function(){
     
-    let suite = this 
+    let suite = this; 
     
     beforeAll(function(done){
       helpers.run(path.resolve(__dirname, '../generators/app'))
-        .withPrompts({
-          projectTitle: "Test Project",
-          projectDescription: "This is a test",
-          docPort: 4000,
-          serverPort: 5000
-        })
-        .then(function(dir){
-          suite.dir = dir;
-          done();
-        })
-        .catch(done)
+      .withPrompts({
+        projectTitle: "Test Project",
+        projectDescription: "This is a test",
+        docPort: 4000,
+        serverPort: 5000
+      })
+      .then(function(dir){
+        suite.dir = dir;
+        done();
+      })
+      .catch(done)
     })
     
     it("should put project title and description in api-src/_heading.apib", function(){
