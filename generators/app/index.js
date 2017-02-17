@@ -1,4 +1,4 @@
-var Base = require('../_lib/generator-base')
+var Base = require('./generator-base')
 
 module.exports = Base.extend({
   

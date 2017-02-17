@@ -1,4 +1,4 @@
-var Base = require('../_lib/generator-base');
+var Base = require('../app/generator-base');
 var dashify = require('dashify');
 var pluralize = require("pluralize");
 
