@@ -12,17 +12,19 @@ const API_BLUEPRINT = "api-blueprint.apib"
 const DOC_PORT = <%= docPort %>
 const SERVER_PORT = <%= serverPort %>
 
-gulp.task("build:apib", function(){
+gulp.task("build:apib", function(done){
   gulp.src(`${API_SRC}/**/*`)
   .pipe(concat(API_BLUEPRINT))
   .pipe(gulp.dest(API_DOCS))
+  .on("finish", done)
 })
 
-gulp.task("build:html", function(){
+gulp.task("build:html", ['build:apib'], function(done){
   gulp.src(`${API_DOCS}/${API_BLUEPRINT}`)
   .pipe(aglio({ template: "default" }))
   .pipe(rename("index.html"))
   .pipe(gulp.dest(`${API_DOCS}`))
+  .on('finish', done)
 })
 
 gulp.task("serve:docs", function(){
@@ -68,7 +70,6 @@ gulp.task("watch", function(){
 })
 
 gulp.task("default", [
-  "build:apib", 
   "build:html", 
   "serve:docs", 
   "watch"
