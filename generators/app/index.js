@@ -39,13 +39,14 @@ module.exports = Base.extend({
   },
   
   writing: function() {
-    this._touch( 'api-docs/.gitkeep' )
-    this._touch( 'api-src/routes/.gitkeep' )
-    this._touch( 'static-data/.gitkeep' )
-    this._copyTpl('_gitignore', '.gitignore')
-    this._copyTpl('_gulpfile.js', 'gulpfile.js')
-    this._copyTpl('api-src/_heading.apib')
-    this._copy('api-src/data-structures/_heading.apib')
+    this._touch( 'api-docs/.gitkeep' );
+    this._touch( 'api-src/routes/.gitkeep' );
+    this._touch( 'static-data/.gitkeep' );
+    this._copyTpl('_gitignore', '.gitignore');
+    this._copyTpl('_gulpfile.js', 'gulpfile.js');
+    this._copyTpl('api-src/_heading.apib');
+    this._copy('api-src/data-structures/_heading.apib');
+    this._copyTpl('README.md');
   },
 
   install: function() {

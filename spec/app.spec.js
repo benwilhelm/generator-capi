@@ -56,5 +56,14 @@ describe("Main Generator (yo capi)", function(){
       assert.file(file);
     })
     
+    it("should create README.md", function(){
+      let file = `${suite.dir}/README.md`;
+      assert.file(file);
+      assert.fileContent(file, "# Test Project")
+      assert.fileContent(file, [
+        "This starts a local http server out of the `api-docs`",
+        "directory at http://localhost:4000"].join(' '))
+    })
+    
   })
 })
