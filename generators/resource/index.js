@@ -5,6 +5,7 @@ var pluralize = require("pluralize");
 module.exports = Base.extend({
   
   prompting: function() {
+    var self = this;
     return this.prompt([{
       type: 'input',
       name: 'resourceName',
@@ -25,7 +26,11 @@ module.exports = Base.extend({
       type: 'input',
       name: 'resourceDescription',
       message : 'Description'
-    }]).then(function(answers){
+    }])
+    .then(function(answers){
+      return self._promptForProperty(answers)
+    })
+    .then(function(answers){
       answers.idSample = 1;
       if (answers.idType === 'string') {
         answers.idSample = '507f191e810c19729de860ea'
@@ -33,6 +38,67 @@ module.exports = Base.extend({
       answers.resourcePlural = pluralize(answers.resourceName)
       this.templateVars = answers;
     }.bind(this))
+  },
+  
+  _promptForProperty(answers) {
+    var self = this;
+    answers.properties = answers.properties || [];
+    if (!answers.properties.length) {
+      this.log("")
+      this.log("Let's add some properties!")
+      this.log("Leave `Property Name` blank to finish.")
+    }
+    return self.prompt([{
+      type: 'input',
+      name: 'name',
+      message: 'Property Name'
+    },{
+      type: 'list',
+      name: 'type',
+      message: 'Property Type',
+      choices: ['number', 'string'],
+      when: function(property) {
+        return !!property.name;
+      }
+    }, {
+      type: 'input',
+      name: 'description',
+      message: 'Property Description',
+      when: function(property) {
+        return !!property.name;
+      }
+    }, {
+      type: 'confirm',
+      name: 'required',
+      message: "Required?",
+      default: false,
+      when: function(property) {
+        return !!property.name
+      }
+    }, {
+      type: 'input',
+      name: 'sampleValue',
+      message: 'Sample Value (optional)',
+      when: function(property) {
+        return !!property.name
+      }
+    }])
+    .then(function(property){
+      self.log("")
+      if (property.name) {
+        var declaration = `${property.name}: `;
+        declaration += `\`${property.sampleValue}\` `;
+        declaration += `(${property.type}`;
+        if (property.required) {
+          declaration += ', required'
+        }
+        declaration += ')'
+        property.declaration = declaration;
+        answers.properties.push(property);
+        return self._promptForProperty(answers);
+      }
+      return answers;
+    })
   },
   
   writing: function(){

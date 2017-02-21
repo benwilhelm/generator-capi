@@ -17,7 +17,17 @@ describe("Resource Subgenerator (yo capi:resource)", function(){
         resourceName: 'TestResource',
         route: '/testresources',
         idType: 'number',
-        resourceDescription: 'This is a test resource'
+        resourceDescription: 'This is a test resource',
+        properties: [{
+          name: "testProperty",
+          type: "string",
+          description: "This is a test property",
+          required: true,
+          sampleValue: 'foo bar'
+        }]
+      })
+      .withPrompts({
+        name: false
       })
       .then(function(dir){
         suite.dir = dir;
@@ -32,6 +42,9 @@ describe("Resource Subgenerator (yo capi:resource)", function(){
       assert.file(file);
       assert.fileContent(file, "### TestResource (object)");
       assert.fileContent(file, "+ id: `1` (number, required)");
+      assert.fileContent(file, "  The unique id of the TestResource");
+      assert.fileContent(file, "+ testProperty: `foo bar` (string, required)");
+      assert.fileContent(file, "  This is a test property");
     })
 
     it("should create routes file with CRUD endpoints", function(){
