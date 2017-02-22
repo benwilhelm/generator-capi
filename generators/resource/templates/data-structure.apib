@@ -2,9 +2,8 @@
 
 + id: `<%= idSample %>` (<%= idType %>, required)
   The unique id of the <%= resourceName %>
-
-<% for (i=0; i<properties.length; i++) {%>
-<% var prop = properties[i] %>
+<% for (i=0; i<properties.length; i++) {
+   var prop = properties[i] %>
 + <%= prop.declaration %>
   <%= prop.description %>
 <% } %>

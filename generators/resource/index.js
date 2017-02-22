@@ -46,7 +46,6 @@ module.exports = Base.extend({
     if (!answers.properties.length) {
       this.log("")
       this.log("Let's add some properties!")
-      this.log("Leave `Property Name` blank to finish.")
     }
     return self.prompt([{
       type: 'input',
@@ -84,17 +83,30 @@ module.exports = Base.extend({
       }
     }])
     .then(function(property){
-      self.log("")
-      if (property.name) {
-        var declaration = `${property.name}: `;
-        declaration += `\`${property.sampleValue}\` `;
-        declaration += `(${property.type}`;
-        if (property.required) {
-          declaration += ', required'
-        }
-        declaration += ')'
-        property.declaration = declaration;
-        answers.properties.push(property);
+      var declaration = `${property.name}: `;
+      declaration += `\`${property.sampleValue}\` `;
+      declaration += `(${property.type}`;
+      if (property.required) {
+        declaration += ', required'
+      }
+      declaration += ')'
+      property.declaration = declaration;
+      answers.properties.push(property);
+      return self._promptForAnother(answers)
+    })
+  },
+  
+  _promptForAnother: function(answers) {
+    var self = this;
+    return self.prompt({
+      type: 'confirm',
+      name: 'another',
+      message: "Add another property?",
+      default: true,
+    })
+    .then(function(response){
+      if (response.another) {
+        self.log("")
         return self._promptForProperty(answers);
       }
       return answers;

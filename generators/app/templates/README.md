@@ -43,6 +43,14 @@ This will add a new model to your API and scaffold CRUD routes for it. It will p
 * __ID Type:__ The primitive type of the model's ID field. 
 * __Description:__ A user-friendly description of the model.
 
+Then it will prompt you to add properties to your model, asking you the following repeatedly until you tell it to stop:
+
+* __Property Name:__ The name of the property as it will appear in your returned model
+* __Property Type:__ The primitive type of the property's value
+* __Property Description:__ A short description of the property
+* __Required?:__ Whether this property is required
+* __Sample Value (optional):__ A sample value for documentation
+
 This will put the model definition file in `api-src/data-structures/<resouce-name>.apib` and the route definitions in `api-src/routes/<resource-name>.apib`. See the APIB documentation for specifics on formatting [data structures][data-structures] and [resource groups][resource-group] (routes).
 
 [data-structures]: https://raw.githubusercontent.com/apiaryio/api-blueprint/master/examples/10.%20Data%20Structures.md

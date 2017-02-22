@@ -12,29 +12,24 @@ describe("Resource Subgenerator (yo capi:resource)", function(){
     let suite = this;
     
     beforeAll(function(done){
-      helpers.run(path.resolve(__dirname, '../generators/resource'))
+      return helpers.run(path.resolve(__dirname, '../generators/resource'))
       .withPrompts({
         resourceName: 'TestResource',
         route: '/testresources',
         idType: 'number',
         resourceDescription: 'This is a test resource',
-        properties: [{
-          name: "testProperty",
-          type: "string",
-          description: "This is a test property",
-          required: true,
-          sampleValue: 'foo bar'
-        }]
-      })
-      .withPrompts({
-        name: false
+        name: "testProperty",
+        type: "string",
+        description: "This is a test property",
+        required: true,
+        sampleValue: 'foo bar',
+        another: false
       })
       .then(function(dir){
         suite.dir = dir;
         done();
       })
       .catch(done)
-
     })
     
     it("should create data structure file", function(){
