@@ -1,9 +1,12 @@
-### <%= resourceName %> (object)
-
-+ id: `<%= idSample %>` (<%= idType %>, required)
-  The unique id of the <%= resourceName %>
+### <%= resourceName %>Submitted (object)
 <% for (i=0; i<properties.length; i++) {
    var prop = properties[i] %>
 + <%= prop.declaration %>
   <%= prop.description %>
 <% } %>
+
+
+### <%= resourceName %>Returned (<%= resourceName %>Submitted)
+
++ id: `<%= idSample %>` (<%= idType %>, required)
+  The unique id of the <%= resourceName %>

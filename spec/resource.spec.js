@@ -35,11 +35,12 @@ describe("Resource Subgenerator (yo capi:resource)", function(){
     it("should create data structure file", function(){
       let file = `${suite.dir}/api-src/data-structures/test-resource.apib`;
       assert.file(file);
-      assert.fileContent(file, "### TestResource (object)");
-      assert.fileContent(file, "+ id: `1` (number, required)");
-      assert.fileContent(file, "  The unique id of the TestResource");
+      assert.fileContent(file, "### TestResourceSubmitted (object)")
       assert.fileContent(file, "+ testProperty: `foo bar` (string, required)");
       assert.fileContent(file, "  This is a test property");
+      assert.fileContent(file, "### TestResourceReturned (TestResourceSubmitted)");
+      assert.fileContent(file, "+ id: `1` (number, required)");
+      assert.fileContent(file, "  The unique id of the TestResource");
     })
 
     it("should create routes file with CRUD endpoints", function(){
@@ -49,6 +50,8 @@ describe("Resource Subgenerator (yo capi:resource)", function(){
       assert.fileContent(file, "This is a test resource");
       assert.fileContent(file, '## TestResources Collection [/testresources]');
       assert.fileContent(file, '### Get all TestResources [GET]');
+      assert.fileContent(file, 'Attributes (TestResourceReturned)')
+      assert.fileContent(file, 'Attributes (TestResourceSubmitted)')
       assert.fileContent(file, '### Create a new TestResource [POST]');
       assert.fileContent(file, '## Single TestResource [/testresources/{testresource_id}]');
       assert.fileContent(file, '### Get a TestResource [GET]');

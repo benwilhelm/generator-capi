@@ -9,15 +9,15 @@
 ### Get all <%= resourcePlural %> [GET]
 
   + Response 200 (application/json)
-    + Attributes (array[<%= resourceName %>])
+    + Attributes (array[<%= resourceName %>Returned])
 
 ### Create a new <%= resourceName %> [POST]
 
   + Request (application/json)
-    + Attributes (<%= resourceName %>)
+    + Attributes (<%= resourceName %>Submitted)
 
   + Response 200 (application/json)
-    + Attributes (<%= resourceName %>)
+    + Attributes (<%= resourceName %>Returned)
 
 ## Single <%= resourceName %> [<%= route %>/{<%= resourceName.toLowerCase() %>_id}]
 
@@ -27,15 +27,15 @@
 ### Get a <%= resourceName %> [GET]
 
   + Response 200 (application/json)
-    + Attributes (<%= resourceName %>)
+    + Attributes (<%= resourceName %>Returned)
 
 ### Update a <%= resourceName %> [PUT]
   
   + Request (application/json)
-    + Attributes (<%= resourceName %>)
+    + Attributes (<%= resourceName %>Submitted)
 
   + Response 200 (application/json)
-    + Attributes (<%= resourceName %>)
+    + Attributes (<%= resourceName %>Returned)
 
 ### Delete a <%= resourceName %> [DELETE]
 
