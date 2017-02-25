@@ -5,14 +5,18 @@ let fs      = require('fs');
 let helpers = require("yeoman-test");
 let path    = require("path");
 
+let deps = [
+  [helpers.createDummyGenerator(), 'npm-init:app']
+]
+
 describe("Main Generator (yo capi)", function(){
   
   describe("Generic setup", function(){
-    
     let suite = this; 
     
     beforeAll(function(done){
-      helpers.run(path.resolve(__dirname, '../generators/app'))
+      return helpers.run(path.resolve(__dirname, '../generators/app'))
+      .withGenerators(deps)
       .withPrompts({
         projectTitle: "Test Project",
         projectDescription: "This is a test",
