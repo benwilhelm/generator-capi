@@ -45,6 +45,16 @@ describe("Main Generator (yo capi)", function(){
       assert.file(file);
       assert.fileContent(file, "## Data Structures");
     })
+
+    it("should create Error data structures", function(){
+      let file = `${suite.dir}/api-src/data-structures/errors.apib`;
+      assert.file(file);
+      assert.fileContent(file, "### Error (object)");
+      assert.fileContent(file, "### ErrorNotFound (Error)");
+      assert.fileContent(file, "### ErrorUnauthorized (Error)");
+      assert.fileContent(file, "### ErrorForbidden (Error)");
+      assert.fileContent(file, "### ErrorBadRequest (Error)");
+    })
     
     it("should create api-src/routes/.gitkeep", function(){
       let file = `${suite.dir}/api-src/routes/.gitkeep`;

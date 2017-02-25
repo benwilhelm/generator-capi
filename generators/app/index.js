@@ -46,6 +46,7 @@ module.exports = Base.extend({
     this._copyTpl('_gulpfile.js', 'gulpfile.js');
     this._copyTpl('api-src/_heading.apib');
     this._copy('api-src/data-structures/_heading.apib');
+    this._copy('api-src/data-structures/errors.apib');
     this._copyTpl('README.md');
   },
 

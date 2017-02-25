@@ -5,5 +5,17 @@ FORMAT: 1A
 
 <%= projectDescription %>
 
+## Error States
+
+While only `2XX` or other particularly relevant response types are detailed below, it may be assumed that all endpoints implement standard [HTTP Response Codes][response-codes] as applicable. All errors have a `code` and `message` parameter. For example:
+    
+    {
+      "code": "BAD_REQUEST",
+      "message": "There was a problem with the submitted data. Please correct the issue and try again"
+    }
+
+[response-codes]: https://github.com/for-GET/know-your-http-well/blob/master/status-codes.md
+
+
 ---
 <br>
