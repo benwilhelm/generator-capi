@@ -1,5 +1,13 @@
 # Changelog
 
+## v1.2.0 2017-03-20
+
+* 556eb3d Add node 4 to travis spec
+* b773358 Mock npm-init generator for tests
+* 864087e Add CHANGELOG.md
+* c1d034d Add error responses to data structures
+* 3402c83 Create separate data structures for submitted and returned models
+
 ## v1.1.0 2017-02-21
 
 * 3d7815f: Fix prompting flow to allow proper testing
