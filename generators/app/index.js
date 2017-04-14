@@ -1,16 +1,23 @@
-var Base = require('./generator-base')
+'use strict';
 
-module.exports = Base.extend({
+var Base = require('./generator-base')
+var minNodeVersion = 6.0;
+
+module.exports = class extends Base {
   
-  constructor: function() {
-    Base.apply(this, arguments)
-  },
-  
-  initializing: function() {
+  initializing() {
+    if (parseFloat(process.versions.node) < minNodeVersion) {
+      this.log('');
+      this.log('******************************************************************************');
+      this.log(`*  Using the CAPI generator with Node versions before ${minNodeVersion} is not recommended.  *`);
+      this.log(`*          We recommend upgrading to Node ${minNodeVersion} or greater (try nvm!)            *`);
+      this.log('******************************************************************************');
+      this.log('');
+    }
     this.composeWith(require.resolve('generator-npm-init/app'))
-  },
+  }
   
-  prompting: function() {
+  prompting() {
     return this.prompt([{
       type : 'input',
       name : 'projectTitle',
@@ -36,9 +43,9 @@ module.exports = Base.extend({
       this.log("")
       this.log("*** Initializing package.json ***")
     }.bind(this))
-  },
+  }
   
-  writing: function() {
+  writing() {
     this._touch( 'api-docs/.gitkeep' );
     this._touch( 'api-src/routes/.gitkeep' );
     this._touch( 'static-data/.gitkeep' );
@@ -48,9 +55,9 @@ module.exports = Base.extend({
     this._copy('api-src/data-structures/_heading.apib');
     this._copy('api-src/data-structures/errors.apib');
     this._copyTpl('README.md');
-  },
+  }
 
-  install: function() {
+  install() {
     this.npmInstall([
       'aglio',
       'drakov',
@@ -61,4 +68,4 @@ module.exports = Base.extend({
       'gulp-rename'
     ], { "save": true })
   }
-})
+}

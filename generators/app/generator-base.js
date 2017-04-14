@@ -1,26 +1,28 @@
-var generators = require("yeoman-generator");
+'use strict';
 
-module.exports = generators.Base.extend({
+var Generator = require("yeoman-generator");
 
-  _copy: function(src, dest) {
+module.exports = class extends Generator {
+
+  _copy(src, dest) {
     dest = dest || src;
     this.fs.copy(
       this.templatePath(src),
       this.destinationPath(dest)
     )
-  },
+  }
   
-  _copyTpl: function(src, dest) {
+  _copyTpl(src, dest) {
     dest = dest || src;
     this.fs.copyTpl(
       this.templatePath(src),
       this.destinationPath(dest),
       this.templateVars
     )
-  },
+  }
   
-  _touch: function(file) {
+  _touch(file) {
     this.fs.write( this.destinationPath(file), "" )
   }
   
-})
+}
