@@ -1,10 +1,19 @@
 'use strict';
 
 var Base = require('./generator-base')
+var minNodeVersion = 6.0;
 
 module.exports = class extends Base {
   
   initializing() {
+    if (parseFloat(process.versions.node) < minNodeVersion) {
+      this.log('');
+      this.log('******************************************************************************');
+      this.log(`*  Using the CAPI generator with Node versions before ${minNodeVersion} is not recommended.  *`);
+      this.log(`*          We recommend upgrading to Node ${minNodeVersion} or greater (try nvm!)            *`);
+      this.log('******************************************************************************');
+      this.log('');
+    }
     this.composeWith(require.resolve('generator-npm-init/app'))
   }
   
