@@ -7,7 +7,7 @@ module.exports = Base.extend({
   },
   
   initializing: function() {
-    this.composeWith('npm-init', require.resolve('generator-npm-init/app'))
+    this.composeWith(require.resolve('generator-npm-init/app'))
   },
   
   prompting: function() {
