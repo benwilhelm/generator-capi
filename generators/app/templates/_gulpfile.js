@@ -69,8 +69,6 @@ gulp.task("watch", function(){
   gulp.watch( [`${API_DOCS}/*.html`]   , ["serve:reload"] )
 })
 
-gulp.task("default", [
-  "build:html", 
-  "serve:docs", 
-  "watch"
-])
+gulp.task("default", [ "build:html", "serve:docs" ], function() {
+  return gulp.run('watch')
+})
