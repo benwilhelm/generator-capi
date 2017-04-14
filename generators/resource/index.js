@@ -1,3 +1,5 @@
+'use strict';
+
 var Base = require('../app/generator-base');
 var dashify = require('dashify');
 var pluralize = require("pluralize");

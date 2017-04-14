@@ -1,11 +1,9 @@
+'use strict';
+
 var Base = require('./generator-base')
 
 module.exports = class extends Base {
   
-  // constructor() {
-  //   Base.apply(this, arguments)
-  // }
-  // 
   initializing() {
     this.composeWith(require.resolve('generator-npm-init/app'))
   }
