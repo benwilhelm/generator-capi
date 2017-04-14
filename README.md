@@ -1,5 +1,6 @@
 ![travis build](https://travis-ci.org/benwilhelm/generator-capi.svg?branch=master)
 
+![dependencies](https://david-dm.org/benwilhelm/generator-capi.svg)
 
 # Composable API Generator
 
