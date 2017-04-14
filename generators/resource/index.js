@@ -2,9 +2,9 @@ var Base = require('../app/generator-base');
 var dashify = require('dashify');
 var pluralize = require("pluralize");
 
-module.exports = Base.extend({
+module.exports = class extends Base {
   
-  prompting: function() {
+  prompting() {
     var self = this;
     return this.prompt([{
       type: 'input',
@@ -38,7 +38,7 @@ module.exports = Base.extend({
       answers.resourcePlural = pluralize(answers.resourceName)
       this.templateVars = answers;
     }.bind(this))
-  },
+  }
   
   _promptForProperty(answers) {
     var self = this;
@@ -94,9 +94,9 @@ module.exports = Base.extend({
       answers.properties.push(property);
       return self._promptForAnother(answers)
     })
-  },
+  }
   
-  _promptForAnother: function(answers) {
+  _promptForAnother(answers) {
     var self = this;
     return self.prompt({
       type: 'confirm',
@@ -111,24 +111,24 @@ module.exports = Base.extend({
       }
       return answers;
     })
-  },
+  }
   
-  writing: function(){
+  writing(){
     this._writeDataStructure();
     this._writeRoutes();
-  },
+  }
   
-  _writeDataStructure: function() {
+  _writeDataStructure() {
     var filename = dashify(this.templateVars.resourceName);
     var src = `data-structure.apib`;
     var dest = `api-src/data-structures/${filename}.apib`;
     this._copyTpl(src, dest)
-  },
+  }
   
-  _writeRoutes: function() {
+  _writeRoutes() {
     var filename = dashify(this.templateVars.resourceName);
     var src = `route.apib`;
     var dest = `api-src/routes/${filename}.apib`;
     this._copyTpl(src, dest)
   }
-})
+}

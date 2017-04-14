@@ -1,16 +1,16 @@
 var Base = require('./generator-base')
 
-module.exports = Base.extend({
+module.exports = class extends Base {
   
-  constructor: function() {
-    Base.apply(this, arguments)
-  },
-  
-  initializing: function() {
+  // constructor() {
+  //   Base.apply(this, arguments)
+  // }
+  // 
+  initializing() {
     this.composeWith(require.resolve('generator-npm-init/app'))
-  },
+  }
   
-  prompting: function() {
+  prompting() {
     return this.prompt([{
       type : 'input',
       name : 'projectTitle',
@@ -36,9 +36,9 @@ module.exports = Base.extend({
       this.log("")
       this.log("*** Initializing package.json ***")
     }.bind(this))
-  },
+  }
   
-  writing: function() {
+  writing() {
     this._touch( 'api-docs/.gitkeep' );
     this._touch( 'api-src/routes/.gitkeep' );
     this._touch( 'static-data/.gitkeep' );
@@ -48,9 +48,9 @@ module.exports = Base.extend({
     this._copy('api-src/data-structures/_heading.apib');
     this._copy('api-src/data-structures/errors.apib');
     this._copyTpl('README.md');
-  },
+  }
 
-  install: function() {
+  install() {
     this.npmInstall([
       'aglio',
       'drakov',
@@ -61,4 +61,4 @@ module.exports = Base.extend({
       'gulp-rename'
     ], { "save": true })
   }
-})
+}
