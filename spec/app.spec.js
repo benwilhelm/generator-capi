@@ -12,7 +12,6 @@ describe("Main Generator (yo capi)", function(){
     
     beforeAll(function(done){
       return helpers.run(path.resolve(__dirname, '../generators/app'))
-      .withGenerators(deps)
       .withPrompts({
         projectTitle: "Test Project",
         projectDescription: "This is a test",
