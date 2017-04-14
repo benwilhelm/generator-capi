@@ -5,10 +5,6 @@ let fs      = require('fs');
 let helpers = require("yeoman-test");
 let path    = require("path");
 
-let deps = [
-  [helpers.createDummyGenerator(), 'npm-init:app']
-]
-
 describe("Main Generator (yo capi)", function(){
   
   describe("Generic setup", function(){
