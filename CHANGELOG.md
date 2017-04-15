@@ -1,5 +1,16 @@
 # Changelog
 
+## v1.3.0 2017-04-14
+
+* d8f880d Add support for enum, array, object property types
+* 0eef972 Add dependencies badge to README
+* 2324163 Drop travis support for Node 4 and 5
+* 7ce6d29 Add strict declarations
+* cbe1a88 Update yeoman-generator dependency to 1.1
+* 425ba0d Update pluralize dependency
+* 61d4d54 Bugfix/generator npm init dependency (#16)
+* 59a4efb Run watch task as callback in default task
+
 ## v1.2.0 2017-03-20
 
 * 556eb3d Add node 4 to travis spec
