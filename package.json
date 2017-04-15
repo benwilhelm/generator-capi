@@ -1,6 +1,6 @@
 {
   "name": "generator-capi",
-  "version": "1.2.1-pre",
+  "version": "1.3.0",
   "description": "A Yeoman generator for creating an api-blueprint authoring environment",
   "main": "generators/app/index.js",
   "scripts": {
