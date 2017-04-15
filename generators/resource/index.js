@@ -1,5 +1,6 @@
 'use strict';
 
+var _ = require('lodash');
 var Base = require('../app/generator-base');
 var dashify = require('dashify');
 var pluralize = require("pluralize");
@@ -57,7 +58,7 @@ module.exports = class extends Base {
       type: 'list',
       name: 'type',
       message: 'Property Type',
-      choices: ['number', 'string'],
+      choices: ['number', 'string', 'boolean', 'enum', 'array', 'object'],
       when: function(property) {
         return !!property.name;
       }
@@ -79,14 +80,20 @@ module.exports = class extends Base {
     }, {
       type: 'input',
       name: 'sampleValue',
-      message: 'Sample Value (optional)',
+      message: 'Sample Value (separate enums/arrays with commas)',
       when: function(property) {
-        return !!property.name
+        return !!property.name && (property.type != 'object')
       }
     }])
     .then(function(property){
       var declaration = `${property.name}: `;
-      declaration += `\`${property.sampleValue}\` `;
+      
+      var sampleValue = property.sampleValue;
+      if (!_.includes(['enum', 'array'], property.type)) {
+        sampleValue = '`' + sampleValue + '`';
+      }
+      
+      declaration += `${sampleValue} `;
       declaration += `(${property.type}`;
       if (property.required) {
         declaration += ', required'
