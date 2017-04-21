@@ -48,14 +48,12 @@ The initial project structure will be as follows:
 |- .gitignore
 |- api-docs/
 |   └- .gitkeep
-|- api-src/
-|   |- data-structures
-|   |   └- _heading.apib 
-|   |- routes/
-|   |   └- .gitkeep
-|   └- _heading.apib 
-└- static-data/
-    └- .gitkeep
+└- api-src/
+    |- data-structures
+    |   └- _heading.apib 
+    |- routes/
+    |   └- .gitkeep
+    └- _heading.apib 
 ```
 
 #### `api-docs/`
@@ -74,10 +72,6 @@ This is where you'll put your route definitions. Running `yo capi:resource` (out
 
 [resource-group]: https://raw.githubusercontent.com/apiaryio/api-blueprint/master/examples/04.%20Grouping%20Resources.md
 
-
-#### `static-data/`
-
-This is an artifact of an experimental feature. For now, these are not the droids you're looking for.
 
 ### Creating a REST Resource
 

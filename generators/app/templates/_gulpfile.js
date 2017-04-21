@@ -35,29 +35,6 @@ gulp.task("serve:docs", function(){
   })
 })
 
-gulp.task("serve:api", function(){
-  
-  var dir = __dirname + "/static-data";
-  fs.readdir(dir, function(err, files){
-    if (err) throw err;
-    var staticPaths = files.map(function(file){
-      var a = file.split(".");
-      var modelName = a[0];
-      return `static-data/${file}=/${modelName}`
-    })
-    
-    var argv = {
-      sourceFiles: `${API_DOCS}/${API_BLUEPRINT}`,
-      staticPaths: staticPaths,
-      serverPort: SERVER_PORT,
-      watch: true,
-      disableCORS: true
-    };
-
-    drakov.run(argv);
-  })
-})
-
 gulp.task("serve:reload", function(){
   gulp.src(`${API_DOCS}/*.html`)
   .pipe(connect.reload())

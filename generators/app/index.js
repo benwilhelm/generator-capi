@@ -48,7 +48,6 @@ module.exports = class extends Base {
   writing() {
     this._touch( 'api-docs/.gitkeep' );
     this._touch( 'api-src/routes/.gitkeep' );
-    this._touch( 'static-data/.gitkeep' );
     this._copyTpl('_gitignore', '.gitignore');
     this._copyTpl('_gulpfile.js', 'gulpfile.js');
     this._copyTpl('api-src/_heading.apib');
@@ -60,7 +59,6 @@ module.exports = class extends Base {
   install() {
     this.npmInstall([
       'aglio',
-      'drakov',
       'gulp',
       'gulp-aglio',
       'gulp-concat',
