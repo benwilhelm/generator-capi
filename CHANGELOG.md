@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.4.0 2017-04-21 
+
+* f3dc7cf Removing drakov feature
+
 ## v1.3.0 2017-04-14
 
 * d8f880d Add support for enum, array, object property types
